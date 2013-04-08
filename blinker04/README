@@ -1,0 +1,9 @@
+
+See the README one level up about where to find the reference manual
+and schematics for the board.
+
+Same as blinker03 and blinker02 except the PLL is used to multiply the
+16MHz external crystal oscillator to 96MHz.  This is 6 times faster
+than blinker03.
+
+
