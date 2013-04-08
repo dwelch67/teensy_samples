@@ -1,0 +1,67 @@
+
+
+I got one of these, which can also be found at pjrc.com.
+
+https://www.sparkfun.com/products/11780
+
+Schematic
+
+http://dlnmh9ip6v2uc.cloudfront.net/datasheets/Dev/Arduino/Boards/Teensy3_Schem.gif
+
+Which shows an led tied to C5
+
+Pinout and (programers) reference manual for the freescale microcontroller
+
+http://www.pjrc.com/arm/pdf/kinetis/K20P64M50SF0.pdf
+http://www.pjrc.com/arm/pdf/kinetis/K20P64M50SF0RM.pdf
+
+I am working on a command line loader based on the pjrc.com loader, for
+now there is a gui based tool, but it takes a two step to get it
+
+You need the teensyduino installer
+
+http://www.pjrc.com/teensy/td_download.html
+
+Which requires the arduino environment
+
+http://www.arduino.cc/en/Main/Software
+
+I am not using the arduino environment, I am doing everything bare metal
+but the installer wont install until it sees things in a directory that
+resemble the arduino software, so you dont really need to run the
+arduino software, just need to uncompress the directory so that the
+teensyduino software installes, then from there you can get at the
+teensy gui tool.
+
+After installing, in the arduino software directory tree hardware/tools/teensy
+is the gui.
+
+On linux you may also need to do the udev thing.
+
+Once you compile a program then you point the teensy gui tool at the
+hex file.  Press the button on the teensy, and then download and reboot
+
+I have not figured out why yet but it takes two download and reboots
+before it actually works.  And the auto doesnt work.  I assume my bare
+metal program is too bare for the teensy loader.
+
+Same deal with a command line loader, takes two loads for it to work.
+
+Start with example blinker01.  my build_gcc repo will create an arm gcc
+or llvm compiler which you can use to build these example programs.
+The code sourcery tools will work as well.  My programs generally do
+not care if you use the arm-none-linux-gnueabi or arm-none-eabi variants.
+
+
+The microcontroller has a watchdog timer, if you dont turn it off the
+microcontroller will just keep rebooting and not actually run your
+program.
+
+    //Turn off watchdog and allow update
+    PUT16(WDOG_UNLOCK,0xC520);
+    PUT16(WDOG_UNLOCK,0xD928);
+    PUT16(WDOG_STCTRLH,0x0010);
+
+
+
+

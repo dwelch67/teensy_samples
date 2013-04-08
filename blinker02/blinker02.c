@@ -24,8 +24,6 @@ void ASMDELAY ( unsigned int );
 
 int notmain ( void )
 {
-    unsigned int rx;
-
     //Turn off watchdog and allow update
     PUT16(WDOG_UNLOCK,0xC520);
     PUT16(WDOG_UNLOCK,0xD928);

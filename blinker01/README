@@ -1,3 +1,6 @@
 
 See the README one level up about where to find the reference manual
 and schematics for the board.
+
+blinker01 enables C5 as an output and then uses a simple count loop
+to delay between the led state changes.

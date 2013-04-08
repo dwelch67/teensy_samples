@@ -1,3 +1,7 @@
 
 See the README one level up about where to find the reference manual
 and schematics for the board.
+
+Derived from blinker02, but the external 16MHz crystal oscillator is
+used as a clock source rather than the internal clock.  The 16MHz
+clock is used as is, not multiplied.

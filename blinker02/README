@@ -1,3 +1,6 @@
 
 See the README one level up about where to find the reference manual
 and schematics for the board.
+
+blinker02 enables C5 as an output.  It uses the cortex-m system tick
+timer to delay between led state changes.

@@ -49,7 +49,6 @@ void delay ( void )
 
 int notmain ( void )
 {
-    unsigned int rx;
 
     //Turn off watchdog and allow update
     PUT16(WDOG_UNLOCK,0xC520);
