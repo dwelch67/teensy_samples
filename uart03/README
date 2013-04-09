@@ -1,0 +1,7 @@
+
+See the README one level up about where to find the reference manual
+and schematics for the board.
+
+derived from uart02, adds the hexstring functions for printing, runs
+a counter and prints it out.
+

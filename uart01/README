@@ -1,0 +1,29 @@
+
+See the README one level up about where to find the reference manual
+and schematics for the board.
+
+Derived from blinker04, multiplies external crystal to 96MHz.
+Uart baud rate is divided down from that.
+
+This example writes a 0x55 ("U") and 0x56 ("V") to the port, one per
+second, so the output is UVUVUVUVU...
+115200 8N1
+
+//UART baud rate = UART module clock / (16 × divisor)
+//divisor = UART module clock / (16 × baud)
+//96000000/(16*baud) = 52.08 = 0x34
+//.08 * 32 = 2.56 so we want a fraction of 3
+
+//what if we thought in terms of 32nds of a divisor rather than the divisor
+//divisor32 = (UART module clock / (16 × baud)) * 32
+//divisor32 = (UART module clock * 2) / baud
+//divisor32 = 96000000 * 2 / 115200 = 1666.6
+//round up
+//divisor32 = 1667 = 0x683
+//011010000011
+//0110100 00011
+//divisor of 0x34 with a remainder of 3
+//fraction is divisor32 & 0x1F
+//lower 8 bits of divisor = (divisor32 >> 5)&0xFF
+//upper 5 bits of divisor = (divisor32 >> 13)&0x1F
+

@@ -1,0 +1,8 @@
+
+See the README one level up about where to find the reference manual
+and schematics for the board.
+
+derived from uart01, polls the transmit data register empty flag before
+outputting a character.
+
+
